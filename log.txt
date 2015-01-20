@@ -1,1 +1,6 @@
 You log goes in this  file.
+#Philip Lewallen
+#CS290-Assignment3
+
+Start Time: 	dd77391 Tue, 20 Jan 2015 12:00:25 -0800
+End Times:		dd77391 Tue, 20 Jan 2015 12:29:38 -0800
