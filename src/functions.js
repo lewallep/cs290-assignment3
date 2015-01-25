@@ -13,7 +13,9 @@
 */
 
 //your code here
-
+function uselessFunction() {
+	return null;
+}
 //end your code
 
 var bar = 'not a function';
@@ -30,7 +32,24 @@ var barType = typeof bar;
 */
 
 //your code here
+bar = function(float){
 
+	var bdfloat = float.slice();
+
+	for (i = 0; i < float.length; i++) {
+		float[i] = float[i] * 2;
+	}
+
+	for (i = 0; i < float.length; i++) {
+		if ( (float[i] / 2) != bdfloat[i] ){
+			return false;
+			break;
+		}
+		else
+			return true;
+			break;
+	}
+}
 //end your code
 
 /**
@@ -66,5 +85,40 @@ function GitLog(hash, date, message) {
 */
 
 //your code here
+function parseGit(logArray) {
 
+	var logArr = new Array(logArray.length);
+
+	var singleLog = new Array();
+	var chArr = new Array();
+	var str_Hash = new Array();
+	var str_Date = new Array();
+	var str_Message = new Array();
+
+
+
+	for (var i = 0; i < logArray.length; i++) {
+		singleLog = logArray[i];
+
+		for (var z = 0 ; z < singleLog.length; z++) {
+			chArr[z] = singleLog[z];
+		}
+
+		str_Hash = chArr.splice(0, 7);
+		str_Date = chArr.splice(1, 30);
+		str_Message = chArr.splice(3, chArr.length - 1);
+
+		str_Message.splice(str_Message.length - 1, 1);
+
+		str_Hash = str_Hash.join("");
+		str_Date = str_Date.join("");
+		str_Message = str_Message.join("");
+
+		var date_Date = new Date(str_Date);
+
+		logArr[i] = {hash: str_Hash, date: date_Date, message: str_Message};
+	}
+
+	return logArr;
+}
 //end your code

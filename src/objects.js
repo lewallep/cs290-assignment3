@@ -10,7 +10,7 @@
 
 function returnObjectLiteral() {
   //your code here
-  return undefined; //Modify ONLY this line
+  return { type: 'Goldfish', brand: "Pepperidge Farm", flavor: "Cheddar", count: 2000 }; //Modify ONLY this line
   //end your code
 }
 
@@ -39,6 +39,45 @@ function returnObjectLiteral() {
 
 //your code here
 
+function MessageLog(user) {
+	this.user = user;
+	this.sent = 0;
+	this.received = 0;
+	this.sentMess = new Array();
+	this.receivedMess = new Array();
+
+	this.logMessage = function(messageText, direction) {
+		if (direction === 0 ) {
+			this.sentMess.push(messageText);
+			this.sent++;
+		}
+		else if (direction === 1) {
+			this.receivedMess.push(messageText);
+			this.received++;
+		}
+
+		if (this.sentMess.length > 5 ) {
+			this.sentMess.splice(0, 1);
+		}
+
+
+	};
+
+	this.getSentMessage = function(n) {
+		if (n > this.sentMess.length ) {
+			console.log("The message input is out of range");
+		}
+		return this.sentMess[4 - n];
+	};
+
+	this.totalSent = function() {
+		return this.sent;
+	};
+
+	this.totalReceived = function() {
+		return this.received;
+	};
+}
 //end your code
 
 /**
@@ -47,7 +86,9 @@ function returnObjectLiteral() {
 * received.
 */
 //your code here
-
+MessageLog.prototype.lastReceivedMessage = function() {
+	return this.receivedMess[this.receivedMess.length - 1];
+}
 //end your code
 
 /**
@@ -57,5 +98,8 @@ function returnObjectLiteral() {
 */
 
 //your code here
-
+var myLog = new MessageLog("BlackHatGuy");
+myLog.logMessage("foo", 1);
+myLog.logMessage("bar", 1);
+myLog.logMessage("baz", 1);
 //end your code
